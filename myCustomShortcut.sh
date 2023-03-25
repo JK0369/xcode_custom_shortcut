@@ -2,16 +2,13 @@
 
 arr=()
 
+# eof 까지 파일 입력
 while read line || [[ -n "$line" ]]; do
     arr+=("$line")
 done < /dev/stdin
 
-# Sort the array
-# sorted_arr=($(printf '%s\n' "${arr[@]}" | sort))
-
+# 정렬
 arr_length=${#arr[@]}
-
-# Sort the array manually
 for (( i=0; i<${arr_length}-1; i++ ))
 do
     for (( j=$i+1; j<${arr_length}; j++ ))
@@ -24,8 +21,8 @@ do
     done
 done
 
+# 출력
 for item in "${arr[@]}"
 do
     echo "$item"
-    # printf '%s ' "${sorted_line[@]}"
 done
